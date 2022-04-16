@@ -1,2 +1,7 @@
-<h1>Foods#edit</h1>
-<p>Find me in app/views/foods/edit.html.erb</p>
+<h3>Edit <%= @food.name %></h3>
+<%= form_with model: @food do |form| %>
+    <%= form.text_field :name, placeholder: "name" %>
+    <%= form.text_field :description, placeholder: "description" %>
+    <%= form.number_field :price, placeholder: "price" %>
+    <%= form.submit %>
+<% end %>

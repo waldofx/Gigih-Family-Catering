@@ -1,2 +1,9 @@
 <h1>Foods#new</h1>
 <p>Find me in app/views/foods/new.html.erb</p>
+<h3>Create an Food</h3>
+<%= form_with model: @food do |form| %>
+    <%= form.text_field :name, placeholder: "name" %>
+    <%= form.text_field :description, placeholder: "description" %>
+    <%= form.number_field :price, placeholder: "price" %>
+    <%= form.submit %>
+<% end %>
