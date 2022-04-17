@@ -1,0 +1,29 @@
+<h1>Menu items#index</h1>
+<p>Find me in app/views/menuitems/index.html.erb</p>
+<table>
+  <thead>
+    <tr>
+        <td><b>Name</b></td>
+        <td><b>Description</b></td>
+        <td><b>Price</b></td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @menuitems.each do |menuitem| %>
+      <tr>
+        <td><%= menuitem.name %></td>
+        <td><%= menuitem.description %></td>
+        <td><%= menuitem.price %></td>
+        <td><a href="/menuitems/<%= menuitem.id %>">Show</a></td>
+        <td><a href="/menuitems/<%= menuitem.id %>/edit">Edit</a></td>
+        <td>
+          <form action="/menuitems/<%= menuitem.id %>" method="POST">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="submit" value="Delete" />
+          </form>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<a href="/menuitems/new">New Menu item</a>

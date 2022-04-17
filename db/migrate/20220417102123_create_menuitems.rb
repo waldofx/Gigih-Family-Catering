@@ -1,6 +1,6 @@
-class CreateFoods < ActiveRecord::Migration[7.0]
+class CreateMenuitems < ActiveRecord::Migration[7.0]
   def change
-    create_table :foods do |t|
+    create_table :menuitems do |t|
       t.string :name
       t.text :description
       t.float :price
