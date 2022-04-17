@@ -6,6 +6,16 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-Food.create(name: 'Burger', description: 'Burger is nice', price: 25000)
-Food.create(name: 'Pizza', description: 'Pizza is nice', price: 80000)
-Food.create(name: 'Coke', description: 'Coke is nice', price: 15000)
+Menuitem.create(name: 'Nasi Uduk', description: 'Nasi Uduk is nice', price: 25000)
+Menuitem.create(name: 'Pizza', description: 'Pizza is nice', price: 80000)
+Menuitem.create(name: 'Coke', description: 'Coke is nice', price: 15000)
+
+Category.create(name: 'Makanan Ringan')
+Category.create(name: 'Makanan Berat')
+
+ItemCategory.create(menuitem_id: 1,category_id: 1)
+ItemCategory.create(menuitem_id: 1,category_id: 2)
+ItemCategory.create(menuitem_id: 2,category_id: 1)
+ItemCategory.create(menuitem_id: 2,category_id: 2)
+ItemCategory.create(menuitem_id: 3,category_id: 1)
+ItemCategory.create(menuitem_id: 3,category_id: 2)

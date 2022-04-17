@@ -1,4 +1,4 @@
-class Food < ApplicationRecord
+class Menuitem < ApplicationRecord
     validates :name, presence: true, uniqueness: true
     validates :description, presence: true, length: {
         maximum: 150,
@@ -15,4 +15,7 @@ class Food < ApplicationRecord
     def self.by_letter(letter)
         where("name LIKE ?", "#{letter}%").order(:name)
     end
+
+    has_many :item_categories
+    has_many :categories, through: :item_categories
 end
