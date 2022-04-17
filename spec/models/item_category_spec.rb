@@ -10,14 +10,24 @@ RSpec.describe ItemCategory, type: :model do
   end
 
   it 'is invalid without an item id' do
-    itemcategory = FactoryBot.build(:item_category, item_id: nil)
+    itemcategory = FactoryBot.build(:item_category, menuitem_id: nil)
     itemcategory.valid?
-    expect(itemcategory.errors[:item_id]).to include("can't be blank")
+    expect(itemcategory.errors[:menuitem_id]).to include("can't be blank")
   end
 
   it 'is invalid without an category id' do
     itemcategory = FactoryBot.build(:item_category, category_id: nil)
     itemcategory.valid?
     expect(itemcategory.errors[:category_id]).to include("can't be blank")
+  end
+
+  it "belongs to category" do
+    t = ItemCategory.reflect_on_association(:category)
+    expect(t.macro).to eq(:belongs_to)
+  end
+
+  it "belongs to menuitem" do
+    t = ItemCategory.reflect_on_association(:menuitem)
+    expect(t.macro).to eq(:belongs_to)
   end
 end

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   resources :menuitems
   resources :categories
+  resources :item_categories
   # Defines the root path route ("/")
   # root "articles#index"
 end

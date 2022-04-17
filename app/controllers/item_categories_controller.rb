@@ -65,6 +65,6 @@ class ItemCategoriesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def item_category_params
-      params.require(:item_category).permit(:item_id, :category_id)
+      params.require(:item_category).permit(:menuitem_id, :category_id)
     end
 end
