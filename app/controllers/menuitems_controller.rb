@@ -25,7 +25,7 @@ class MenuitemsController < ApplicationController
 
     respond_to do |format|
       if @menuitem.save
-        format.html { redirect_to menuitem_url(@menuitem), notice: "Menuitem was successfully created." }
+        format.html { redirect_to menuitem_url(@menuitem), notice: "Menu item was successfully created." }
         format.json { render :show, status: :created, location: @menuitem }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class MenuitemsController < ApplicationController
   def update
     respond_to do |format|
       if @menuitem.update(menuitem_params)
-        format.html { redirect_to menuitem_url(@menuitem), notice: "Menuitem was successfully updated." }
+        format.html { redirect_to menuitem_url(@menuitem), notice: "Menu item was successfully updated." }
         format.json { render :show, status: :ok, location: @menuitem }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +52,7 @@ class MenuitemsController < ApplicationController
     @menuitem.destroy
 
     respond_to do |format|
-      format.html { redirect_to menuitems_url, notice: "Menuitem was successfully destroyed." }
+      format.html { redirect_to menuitems_url, notice: "Menu item was successfully destroyed." }
       format.json { head :no_content }
     end
   end
