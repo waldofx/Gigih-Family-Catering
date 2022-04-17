@@ -55,6 +55,10 @@ menuitem = FactoryBot.build(:menuitem, description: nil)
 
     expect(menuitem.errors[:price]).to include("must be greater than or equal to 0.01")
   end
+
+  it "has many item_categories" do
+    should respond_to(:item_categories)
+  end
   
   describe 'self#by_letter' do
     context 'with matching letter' do

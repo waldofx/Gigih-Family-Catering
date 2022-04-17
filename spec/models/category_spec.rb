@@ -23,4 +23,8 @@ RSpec.describe Category, type: :model do
 
     expect(category2.errors[:name]).to include("has already been taken")
   end
+
+  it "has many item_categories" do
+    should respond_to(:item_categories)
+  end
 end
