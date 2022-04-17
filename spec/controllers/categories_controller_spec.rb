@@ -4,8 +4,8 @@ describe CategoriesController do
   describe 'GET #index' do
     context 'without params[:letter]' do
       it "populates an array of all categories" do 
-        nasi_uduk = create(:category, name: "Nasi Uduk")
-        kerak_telor = create(:category, name: "Kelar Telor")
+        nasi_uduk = create(:category, name: "Makanan Ringan")
+        kerak_telor = create(:category, name: "Makanan Berat")
         get :index
         expect(assigns(:categories)).to match_array([nasi_uduk, kerak_telor])
       end
@@ -74,12 +74,12 @@ describe CategoriesController do
     context "with invalid attributes" do
       it "does not save the new category in the database" do
         expect{
-          post :create, params: { category: attributes_for(:invalid_food) }
+          post :create, params: { category: attributes_for(:invalid_category) }
         }.not_to change(Category, :count)
       end
 
       it "re-renders the :new template" do
-        post :create, params: { category: attributes_for(:invalid_food) }
+        post :create, params: { category: attributes_for(:invalid_category) }
         expect(response).to render_template :new
       end
     end
@@ -97,9 +97,9 @@ describe CategoriesController do
         end
   
         it "changes @category's attributes" do
-          patch :update, params: { id: @category, category: attributes_for(:category, name: 'Nasi Uduk') }
+          patch :update, params: { id: @category, category: attributes_for(:category, name: 'Makanan Ringan') }
           @category.reload
-          expect(@category.name).to eq('Nasi Uduk')
+          expect(@category.name).to eq('Makanan Ringan')
         end
   
         it "redirects to the category" do
@@ -110,12 +110,12 @@ describe CategoriesController do
 
     context 'with invalid attributes' do
       it 'does not save the updated category in the database' do
-        patch :update, params: { id: @category, category: attributes_for(:invalid_food, name: 'Nasi Uduk 2', price: "Test") }
-        expect(@category.name).not_to eq('Nasi Uduk 2')
+        patch :update, params: { id: @category, category: attributes_for(:invalid_category, name: 'Makanan Ringan 2') }
+        expect(@category.name).not_to eq('Makanan Ringan 2')
       end
 
       it 're-renders the edit template' do
-        patch :update, params: { id: @category, category: attributes_for(:invalid_food) }
+        patch :update, params: { id: @category, category: attributes_for(:invalid_category) }
         expect(assigns(:category)).to eq @category
         expect(response).to have_http_status(:unprocessable_entity)
       end
