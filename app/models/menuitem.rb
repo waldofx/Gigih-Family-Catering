@@ -15,4 +15,7 @@ class Menuitem < ApplicationRecord
     def self.by_letter(letter)
         where("name LIKE ?", "#{letter}%").order(:name)
     end
+
+    has_many :item_categories
+    has_many :categories, through: :item_categories
 end

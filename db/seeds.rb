@@ -12,3 +12,10 @@ Menuitem.create(name: 'Coke', description: 'Coke is nice', price: 15000)
 
 Category.create(name: 'Makanan Ringan')
 Category.create(name: 'Makanan Berat')
+
+ItemCategory.create(item_id: 1,category_id: 1)
+ItemCategory.create(item_id: 1,category_id: 2)
+ItemCategory.create(item_id: 2,category_id: 1)
+ItemCategory.create(item_id: 2,category_id: 2)
+ItemCategory.create(item_id: 3,category_id: 1)
+ItemCategory.create(item_id: 3,category_id: 2)
