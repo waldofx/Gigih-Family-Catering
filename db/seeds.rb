@@ -19,3 +19,6 @@ ItemCategory.create(menuitem_id: 2,category_id: 1)
 ItemCategory.create(menuitem_id: 2,category_id: 2)
 ItemCategory.create(menuitem_id: 3,category_id: 1)
 ItemCategory.create(menuitem_id: 3,category_id: 2)
+
+Customer.create(name: 'Waldo', phone: "+6281234567888", address: 'Jakarta', email:'waldofelix2@gmail.com')
+Customer.create(name: 'Felix', phone: "+6281234567888", address: 'Jakarta', email:'waldofelix3@gmail.com')

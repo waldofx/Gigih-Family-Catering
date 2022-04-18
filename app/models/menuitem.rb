@@ -4,7 +4,7 @@ class Menuitem < ApplicationRecord
         maximum: 150,
         message: "must be less than 150 character"
     }
-    validates :price, numericality: {
+    validates :price, presence: true, numericality: {
         only_float: true,
         message: "must be numeric"
     }, comparison: {
