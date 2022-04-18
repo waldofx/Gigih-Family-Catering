@@ -4,10 +4,10 @@ describe MenuitemsController do
   describe 'GET #index' do
     context 'without params[:letter]' do
       it "populates an array of all menuitems" do 
-        nasi_uduk = create(:menuitem, name: "Nasi Uduk")
-        kerak_telor = create(:menuitem, name: "Kelar Telor")
+        menuitem1 = create(:menuitem, name: "Nasi Uduk")
+        menuitem2 = create(:menuitem, name: "Kelar Telor")
         get :index
-        expect(assigns(:menuitems)).to match_array([nasi_uduk, kerak_telor])
+        expect(assigns(:menuitems)).to match_array([menuitem1, menuitem2])
       end
 
       it "renders the :index template" do

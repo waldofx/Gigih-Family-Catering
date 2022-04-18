@@ -4,10 +4,10 @@ describe CategoriesController do
   describe 'GET #index' do
     context 'without params[:letter]' do
       it "populates an array of all categories" do 
-        nasi_uduk = create(:category, name: "Makanan Ringan")
-        kerak_telor = create(:category, name: "Makanan Berat")
+        category1 = create(:category, name: "Makanan Ringan")
+        category2 = create(:category, name: "Makanan Berat")
         get :index
-        expect(assigns(:categories)).to match_array([nasi_uduk, kerak_telor])
+        expect(assigns(:categories)).to match_array([category1, category2])
       end
 
       it "renders the :index template" do

@@ -4,10 +4,10 @@ describe ItemCategoriesController do
   describe 'GET #index' do
     context 'without params[:letter]' do
       it "populates an array of all item_categories" do 
-        nasi_uduk = create(:item_category, menuitem_id: 1, category_id: 1)
-        kerak_telor = create(:item_category, menuitem_id: 1, category_id: 2)
+        itemcategory1 = create(:item_category, menuitem_id: 1, category_id: 1)
+        itemcategory2 = create(:item_category, menuitem_id: 1, category_id: 2)
         get :index
-        expect(assigns(:item_categories)).to match_array([nasi_uduk, kerak_telor])
+        expect(assigns(:item_categories)).to match_array([itemcategory1, itemcategory2])
       end
 
       it "renders the :index template" do
