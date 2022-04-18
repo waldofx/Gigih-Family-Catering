@@ -59,6 +59,10 @@ menuitem = FactoryBot.build(:menuitem, description: nil)
   it "has many item_categories" do
     should respond_to(:item_categories)
   end
+
+  it "has many orderdetails" do
+    should respond_to(:orderdetails)
+  end
   
   describe 'self#by_letter' do
     context 'with matching letter' do
