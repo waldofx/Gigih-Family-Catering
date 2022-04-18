@@ -38,4 +38,8 @@ RSpec.describe Customer, type: :model do
     customer.valid?
     expect(customer.errors[:email]).to include("is not a valid email address")
   end
+
+  it "has many orders" do
+    should respond_to(:orders)
+  end
 end

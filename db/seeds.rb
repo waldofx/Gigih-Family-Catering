@@ -22,3 +22,6 @@ ItemCategory.create(menuitem_id: 3,category_id: 2)
 
 Customer.create(name: 'Waldo', phone: "+6281234567888", address: 'Jakarta', email:'waldofelix2@gmail.com')
 Customer.create(name: 'Felix', phone: "+6281234567888", address: 'Jakarta', email:'waldofelix3@gmail.com')
+
+Order.create(customer_id: 1, total: 95000, order_date: '2022-04-18', status: 'NEW')
+Order.create(customer_id: 2, total: 95000, order_date: '2022-04-19', status: 'NEW')
