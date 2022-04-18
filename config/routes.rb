@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :categories
   resources :item_categories
   resources :customers
+  resources :orders
   # Defines the root path route ("/")
   # root "articles#index"
 end

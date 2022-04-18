@@ -97,9 +97,9 @@ describe CategoriesController do
         end
   
         it "changes @category's attributes" do
-          patch :update, params: { id: @category, category: attributes_for(:category, name: 'Makanan Ringan') }
+          patch :update, params: { id: @category, category: attributes_for(:category, name: 'Makanan Ringan 2') }
           @category.reload
-          expect(@category.name).to eq('Makanan Ringan')
+          expect(@category.name).to eq('Makanan Ringan 2')
         end
   
         it "redirects to the category" do

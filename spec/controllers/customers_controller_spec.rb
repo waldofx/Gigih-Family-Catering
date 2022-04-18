@@ -97,9 +97,9 @@ describe CustomersController do
         end
   
         it "changes @customer's attributes" do
-          patch :update, params: { id: @customer, customer: attributes_for(:customer, name: 'Nasi Uduk') }
+          patch :update, params: { id: @customer, customer: attributes_for(:customer, name: 'Waldo 2') }
           @customer.reload
-          expect(@customer.name).to eq('Nasi Uduk')
+          expect(@customer.name).to eq('Waldo 2')
         end
   
         it "redirects to the customer" do
@@ -110,8 +110,8 @@ describe CustomersController do
 
     context 'with invalid attributes' do
       it 'does not save the updated customer in the database' do
-        patch :update, params: { id: @customer, customer: attributes_for(:invalid_customer, name: 'Nasi Uduk 2', price: "Test") }
-        expect(@customer.name).not_to eq('Nasi Uduk 2')
+        patch :update, params: { id: @customer, customer: attributes_for(:invalid_customer, name: 'Waldo 2') }
+        expect(@customer.name).not_to eq('Waldo 2')
       end
 
       it 're-renders the edit template' do

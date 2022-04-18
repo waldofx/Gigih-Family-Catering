@@ -97,9 +97,9 @@ describe MenuitemsController do
         end
   
         it "changes @menuitem's attributes" do
-          patch :update, params: { id: @menuitem, menuitem: attributes_for(:menuitem, name: 'Nasi Uduk') }
+          patch :update, params: { id: @menuitem, menuitem: attributes_for(:menuitem, name: 'Nasi Uduk 2') }
           @menuitem.reload
-          expect(@menuitem.name).to eq('Nasi Uduk')
+          expect(@menuitem.name).to eq('Nasi Uduk 2')
         end
   
         it "redirects to the menuitem" do
@@ -110,7 +110,7 @@ describe MenuitemsController do
 
     context 'with invalid attributes' do
       it 'does not save the updated menuitem in the database' do
-        patch :update, params: { id: @menuitem, menuitem: attributes_for(:invalid_menuitem, name: 'Nasi Uduk 2', price: "Test") }
+        patch :update, params: { id: @menuitem, menuitem: attributes_for(:invalid_menuitem, name: 'Nasi Uduk 2') }
         expect(@menuitem.name).not_to eq('Nasi Uduk 2')
       end
 

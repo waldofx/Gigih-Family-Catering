@@ -97,9 +97,9 @@ describe ItemCategoriesController do
         end
   
         it "changes @item_category's attributes" do
-          patch :update, params: { id: @item_category, item_category: attributes_for(:item_category, menuitem_id: 1) }
+          patch :update, params: { id: @item_category, item_category: attributes_for(:item_category, menuitem_id: 2) }
           @item_category.reload
-          expect(@item_category.menuitem_id).to eq(1)
+          expect(@item_category.menuitem_id).to eq(2)
         end
   
         it "redirects to the item_category" do
