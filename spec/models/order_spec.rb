@@ -19,4 +19,8 @@ RSpec.describe Order, type: :model do
     t = Order.reflect_on_association(:customer)
     expect(t.macro).to eq(:belongs_to)
   end
+
+  it "has many orderdetails" do
+    should respond_to(:orderdetails)
+  end
 end

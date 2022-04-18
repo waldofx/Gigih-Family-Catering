@@ -18,4 +18,6 @@ class Menuitem < ApplicationRecord
 
     has_many :item_categories
     has_many :categories, through: :item_categories
+    has_many :orderdetails
+    has_many :orders, through: :orderdetails
 end
