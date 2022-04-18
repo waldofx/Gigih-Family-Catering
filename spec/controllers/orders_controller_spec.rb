@@ -4,8 +4,8 @@ describe OrdersController do
   describe 'GET #index' do
     context 'without params[:letter]' do
       it "populates an array of all orders" do 
-        order1 = create(:order, customer_id: 1, total: 95000, order_date: '2022-04-18', status: 'NEW')
-        order2 = create(:order, customer_id: 2, total: 95000, order_date: '2022-04-19', status: 'NEW')
+        order1 = create(:order, customer_id: 1, total: 95000.0, order_date: '2022-04-18', status: 'NEW')
+        order2 = create(:order, customer_id: 2, total: 95000.0, order_date: '2022-04-19', status: 'NEW')
         get :index
         expect(assigns(:orders)).to match_array([order1, order2])
       end
@@ -97,9 +97,9 @@ describe OrdersController do
         end
   
         it "changes @order's attributes" do
-          patch :update, params: { id: @order, order: attributes_for(:order, total: 100000) }
+          patch :update, params: { id: @order, order: attributes_for(:order, total: 200000.0) }
           @order.reload
-          expect(@order.total).to eq(100000)
+          expect(@order.total).to eq(200000.0)
         end
   
         it "redirects to the order" do
@@ -110,8 +110,8 @@ describe OrdersController do
 
     context 'with invalid attributes' do
       it 'does not save the updated order in the database' do
-        patch :update, params: { id: @order, order: attributes_for(:invalid_order, total: 100000) }
-        expect(@order.total).not_to eq(100000)
+        patch :update, params: { id: @order, order: attributes_for(:invalid_order, total: 200000.0) }
+        expect(@order.total).not_to eq(200000.0)
       end
 
       it 're-renders the edit template' do

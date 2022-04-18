@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :order do
     customer_id { 1 }
-    total { "95000" }
+    total { 100000.0 }
     order_date { "2022-04-18" }
     status { "NEW" }
   end
