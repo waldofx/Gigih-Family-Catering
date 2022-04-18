@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :item_categories
   resources :customers
   resources :orders
+  resources :orderdetails
   # Defines the root path route ("/")
   # root "articles#index"
 end
