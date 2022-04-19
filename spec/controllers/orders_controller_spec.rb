@@ -97,9 +97,9 @@ describe OrdersController do
         end
   
         it "changes @order's attributes" do
-          patch :update, params: { id: @order, order: attributes_for(:order, total: 200000.0) }
+          patch :update, params: { id: @order, order: attributes_for(:order, customer_id: 2) }
           @order.reload
-          expect(@order.total).to eq(200000.0)
+          expect(@order.customer_id).to eq(2)
         end
   
         it "redirects to the order" do
@@ -110,8 +110,8 @@ describe OrdersController do
 
     context 'with invalid attributes' do
       it 'does not save the updated order in the database' do
-        patch :update, params: { id: @order, order: attributes_for(:invalid_order, total: 200000.0) }
-        expect(@order.total).not_to eq(200000.0)
+        patch :update, params: { id: @order, order: attributes_for(:invalid_order, customer_id: 2) }
+        expect(@order.customer_id).not_to eq(2)
       end
 
       it 're-renders the edit template' do

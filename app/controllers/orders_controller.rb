@@ -31,6 +31,8 @@ class OrdersController < ApplicationController
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @order.errors, status: :unprocessable_entity }
       end
+      # @order[:total] = @order.total
+      # @order.save
     end
   end
 
@@ -65,6 +67,6 @@ class OrdersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def order_params
-      params.require(:order).permit(:customer_id, :total, :order_date, :status, :subtotal)
+      params.require(:order).permit(:customer_id, :order_date, :status)
     end
 end

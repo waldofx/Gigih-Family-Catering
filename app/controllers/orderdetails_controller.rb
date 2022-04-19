@@ -25,6 +25,9 @@ class OrderdetailsController < ApplicationController
 
     respond_to do |format|
       if @orderdetail.save
+        # @order = Order.find(@orderdetail[:order_id])
+        # @order[:total] = @order.total
+        # @order.save
         format.html { redirect_to orderdetail_url(@orderdetail), notice: "Orderdetail was successfully created." }
         format.json { render :show, status: :created, location: @orderdetail }
       else
@@ -65,6 +68,6 @@ class OrderdetailsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def orderdetail_params
-      params.require(:orderdetail).permit(:order_id, :menuitem_id, :quantity, :item_price, :total)
+      params.require(:orderdetail).permit(:order_id, :menuitem_id, :quantity)
     end
 end

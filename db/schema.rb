@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 2022_04_18_123052) do
   create_table "menuitems", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.float "price"
+    t.float "price", default: 1.0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 2022_04_18_123052) do
     t.integer "order_id"
     t.integer "menuitem_id"
     t.integer "quantity"
-    t.float "item_price"
+    t.float "price"
     t.float "total"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

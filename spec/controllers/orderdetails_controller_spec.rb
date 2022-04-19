@@ -4,6 +4,9 @@ describe OrderdetailsController do
   describe 'GET #index' do
     context 'without params[:letter]' do
       it "populates an array of all orderdetails" do 
+        menuitem1 = create(:menuitem)
+        order1 = create(:order)
+        order2 = create(:order)
         orderdetail1 = create(:orderdetail, menuitem_id: 1, order_id: 1, quantity: 1)
         orderdetail2 = create(:orderdetail, menuitem_id: 1, order_id: 2, quantity: 2)
         get :index
@@ -19,12 +22,16 @@ describe OrderdetailsController do
 
   describe 'GET #show' do
     it "assigns the requested orderdetail to @orderdetail" do
+      menuitem1 = create(:menuitem)
+      order1 = create(:order)
       orderdetail = create(:orderdetail)
       get :show, params: { id: orderdetail }
       expect(assigns(:orderdetail)).to eq orderdetail
     end
 
     it "renders the :show template" do
+      menuitem1 = create(:menuitem)
+      order1 = create(:order)
       orderdetail = create(:orderdetail)
       get :show, params: { id: orderdetail }
       expect(response).to render_template :show
@@ -45,12 +52,16 @@ describe OrderdetailsController do
 
   describe 'GET #edit' do
     it "assigns the requested orderdetail to @orderdetail" do
+      menuitem1 = create(:menuitem)
+      order1 = create(:order)
       orderdetail = create(:orderdetail)
       get :edit, params: { id: orderdetail }
       expect(assigns(:orderdetail)).to eq orderdetail
     end
 
     it "renders the :edit template" do
+      menuitem1 = create(:menuitem)
+      order1 = create(:order)
       orderdetail = create(:orderdetail)
       get :edit, params: { id: orderdetail }
       expect(response).to render_template :edit
@@ -60,12 +71,16 @@ describe OrderdetailsController do
   describe 'POST #create' do
     context "with valid attributes" do
       it "saves the new orderdetail in the database" do
+        menuitem1 = create(:menuitem)
+        order1 = create(:order)
         expect{
           post :create, params: { orderdetail: attributes_for(:orderdetail) }
         }.to change(Orderdetail, :count).by(1)
       end
 
       it "redirects to orderdetails#show" do
+        menuitem1 = create(:menuitem)
+        order1 = create(:order)
         post :create, params: { orderdetail: attributes_for(:orderdetail) }
         expect(response).to redirect_to(orderdetail_path(assigns[:orderdetail]))
       end
@@ -87,6 +102,8 @@ describe OrderdetailsController do
 
   describe 'PATCH #update' do
     before :each do
+      @menuitem = create(:menuitem)
+      @order = create(:order)
       @orderdetail = create(:orderdetail)
     end
 
@@ -97,9 +114,9 @@ describe OrderdetailsController do
         end
   
         it "changes @orderdetail's attributes" do
-          patch :update, params: { id: @orderdetail, orderdetail: attributes_for(:orderdetail, menuitem_id: 2) }
+          patch :update, params: { id: @orderdetail, orderdetail: attributes_for(:orderdetail, quantity: 2) }
           @orderdetail.reload
-          expect(@orderdetail.menuitem_id).to eq(2)
+          expect(@orderdetail.quantity).to eq(2)
         end
   
         it "redirects to the orderdetail" do
@@ -110,8 +127,8 @@ describe OrderdetailsController do
 
     context 'with invalid attributes' do
       it 'does not save the updated orderdetail in the database' do
-        patch :update, params: { id: @orderdetail, orderdetail: attributes_for(:invalid_orderdetail, menuitem_id: 2) }
-        expect(@orderdetail.menuitem_id).not_to eq(2)
+        patch :update, params: { id: @orderdetail, orderdetail: attributes_for(:invalid_orderdetail, quantity: 2) }
+        expect(@orderdetail.quantity).not_to eq(2)
       end
 
       it 're-renders the edit template' do
@@ -124,6 +141,8 @@ describe OrderdetailsController do
 
   describe 'DELETE #destroy' do
     before :each do
+      @menuitem = create(:menuitem)
+      @order = create(:order)
       @orderdetail = create(:orderdetail)
     end
 

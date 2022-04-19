@@ -1,5 +1,5 @@
 class Orderdetail < ApplicationRecord
-    before_save :set_item_price
+    before_save :set_price
     before_save :set_total
 
 
@@ -11,22 +11,28 @@ class Orderdetail < ApplicationRecord
     belongs_to :order
 
 
-    def item_price
+    def price
         if persisted?
-            self[:item_price]
+            self[:price]
+        elsif menuitem.nil?
+            1.0
         else
             menuitem.price
         end
     end
 
     def total
-        item_price*quantity
+        if price == 1.0
+            1.0
+        else
+            price*quantity
+        end
     end
 
     private
 
-    def set_item_price
-        self[:item_price] = item_price 
+    def set_price
+        self[:price] = price 
     end
 
     def set_total
