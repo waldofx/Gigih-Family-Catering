@@ -5,6 +5,7 @@ class CreateOrderdetails < ActiveRecord::Migration[7.0]
       t.integer :menuitem_id
       t.integer :quantity
       t.float :item_price
+      t.float :total
 
       t.timestamps
     end
