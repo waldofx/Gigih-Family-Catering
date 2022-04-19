@@ -55,7 +55,6 @@ ActiveRecord::Schema.define(version: 2022_04_18_123052) do
   create_table "orders", force: :cascade do |t|
     t.integer "customer_id"
     t.float "total"
-    t.float "subtotal"
     t.date "order_date"
     t.string "status"
     t.datetime "created_at", precision: 6, null: false
