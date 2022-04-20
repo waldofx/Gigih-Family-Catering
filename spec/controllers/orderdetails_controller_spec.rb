@@ -5,6 +5,7 @@ describe OrderdetailsController do
     context 'without params[:letter]' do
       it "populates an array of all orderdetails" do 
         menuitem1 = create(:menuitem)
+        customer1 = create(:customer)
         order1 = create(:order)
         order2 = create(:order)
         orderdetail1 = create(:orderdetail, menuitem_id: 1, order_id: 1, quantity: 1)
@@ -23,6 +24,7 @@ describe OrderdetailsController do
   describe 'GET #show' do
     it "assigns the requested orderdetail to @orderdetail" do
       menuitem1 = create(:menuitem)
+      customer1 = create(:customer)
       order1 = create(:order)
       orderdetail = create(:orderdetail)
       get :show, params: { id: orderdetail }
@@ -31,6 +33,7 @@ describe OrderdetailsController do
 
     it "renders the :show template" do
       menuitem1 = create(:menuitem)
+      customer1 = create(:customer)
       order1 = create(:order)
       orderdetail = create(:orderdetail)
       get :show, params: { id: orderdetail }
@@ -53,6 +56,7 @@ describe OrderdetailsController do
   describe 'GET #edit' do
     it "assigns the requested orderdetail to @orderdetail" do
       menuitem1 = create(:menuitem)
+      customer1 = create(:customer)
       order1 = create(:order)
       orderdetail = create(:orderdetail)
       get :edit, params: { id: orderdetail }
@@ -61,6 +65,7 @@ describe OrderdetailsController do
 
     it "renders the :edit template" do
       menuitem1 = create(:menuitem)
+      customer1 = create(:customer)
       order1 = create(:order)
       orderdetail = create(:orderdetail)
       get :edit, params: { id: orderdetail }
@@ -72,6 +77,7 @@ describe OrderdetailsController do
     context "with valid attributes" do
       it "saves the new orderdetail in the database" do
         menuitem1 = create(:menuitem)
+        customer1 = create(:customer)
         order1 = create(:order)
         expect{
           post :create, params: { orderdetail: attributes_for(:orderdetail) }
@@ -80,6 +86,7 @@ describe OrderdetailsController do
 
       it "redirects to orderdetails#show" do
         menuitem1 = create(:menuitem)
+        customer1 = create(:customer)
         order1 = create(:order)
         post :create, params: { orderdetail: attributes_for(:orderdetail) }
         expect(response).to redirect_to(orderdetail_path(assigns[:orderdetail]))
@@ -103,6 +110,7 @@ describe OrderdetailsController do
   describe 'PATCH #update' do
     before :each do
       @menuitem = create(:menuitem)
+      @customer1 = create(:customer)
       @order = create(:order)
       @orderdetail = create(:orderdetail)
     end
@@ -142,6 +150,7 @@ describe OrderdetailsController do
   describe 'DELETE #destroy' do
     before :each do
       @menuitem = create(:menuitem)
+      @customer1 = create(:customer)
       @order = create(:order)
       @orderdetail = create(:orderdetail)
     end

@@ -2,14 +2,17 @@ require 'rails_helper'
 
 RSpec.describe Order, type: :model do
   it "has a valid factory" do
+    Customer.create(name: 'Xilef', phone: "+6281234567888", address: 'Jakarta', email:'waldofelix2@gmail.com')
     expect(FactoryBot.build(:order)).to be_valid
   end
   
   it 'is valid with a full data' do
+    Customer.create(name: 'Xilef', phone: "+6281234567888", address: 'Jakarta', email:'waldofelix2@gmail.com')
     expect(FactoryBot.build(:order)).to be_valid
   end
 
   it 'is invalid without a customer_id' do
+    Customer.create(name: 'Xilef', phone: "+6281234567888", address: 'Jakarta', email:'waldofelix2@gmail.com')
     order = FactoryBot.build(:order, customer_id: nil)
     order.valid?
     expect(order.errors[:customer_id]).to include("can't be blank")

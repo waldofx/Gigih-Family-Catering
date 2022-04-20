@@ -7,7 +7,7 @@ class Order < ApplicationRecord
     has_many :orderdetails
     has_many :menuitems, through: :orderdetails
 
-    belongs_to :customer, optional: true
+    belongs_to :customer
 
     accepts_nested_attributes_for :orderdetails, allow_destroy:true
 

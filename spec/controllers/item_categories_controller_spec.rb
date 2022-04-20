@@ -4,6 +4,9 @@ describe ItemCategoriesController do
   describe 'GET #index' do
     context 'without params[:letter]' do
       it "populates an array of all item_categories" do 
+        menuitem1 = create(:menuitem)
+        category1 = create(:category)
+        category2 = create(:category, name:"makanan mematikan")
         itemcategory1 = create(:item_category, menuitem_id: 1, category_id: 1)
         itemcategory2 = create(:item_category, menuitem_id: 1, category_id: 2)
         get :index
@@ -19,12 +22,16 @@ describe ItemCategoriesController do
 
   describe 'GET #show' do
     it "assigns the requested item_category to @item_category" do
+      menuitem1 = create(:menuitem)
+      category1 = create(:category)
       item_category = create(:item_category)
       get :show, params: { id: item_category }
       expect(assigns(:item_category)).to eq item_category
     end
 
     it "renders the :show template" do
+      menuitem1 = create(:menuitem)
+      category1 = create(:category)
       item_category = create(:item_category)
       get :show, params: { id: item_category }
       expect(response).to render_template :show
@@ -45,12 +52,16 @@ describe ItemCategoriesController do
 
   describe 'GET #edit' do
     it "assigns the requested item_category to @item_category" do
+      menuitem1 = create(:menuitem)
+      category1 = create(:category)
       item_category = create(:item_category)
       get :edit, params: { id: item_category }
       expect(assigns(:item_category)).to eq item_category
     end
 
     it "renders the :edit template" do
+      menuitem1 = create(:menuitem)
+      category1 = create(:category)
       item_category = create(:item_category)
       get :edit, params: { id: item_category }
       expect(response).to render_template :edit
@@ -60,12 +71,16 @@ describe ItemCategoriesController do
   describe 'POST #create' do
     context "with valid attributes" do
       it "saves the new item_category in the database" do
+        menuitem1 = create(:menuitem)
+        category1 = create(:category)
         expect{
           post :create, params: { item_category: attributes_for(:item_category) }
         }.to change(ItemCategory, :count).by(1)
       end
 
       it "redirects to item_categories#show" do
+        menuitem1 = create(:menuitem)
+        category1 = create(:category)
         post :create, params: { item_category: attributes_for(:item_category) }
         expect(response).to redirect_to(item_category_path(assigns[:item_category]))
       end
@@ -73,12 +88,16 @@ describe ItemCategoriesController do
 
     context "with invalid attributes" do
       it "does not save the new item_category in the database" do
+        menuitem1 = create(:menuitem)
+        category1 = create(:category)
         expect{
           post :create, params: { item_category: attributes_for(:invalid_item_category) }
         }.not_to change(ItemCategory, :count)
       end
 
       it "re-renders the :new template" do
+        menuitem1 = create(:menuitem)
+        category1 = create(:category)
         post :create, params: { item_category: attributes_for(:invalid_item_category) }
         expect(response).to render_template :new
       end
@@ -87,6 +106,9 @@ describe ItemCategoriesController do
 
   describe 'PATCH #update' do
     before :each do
+      @menuitem1 = create(:menuitem)
+      @menuitem2 = create(:menuitem, name:"ayam gembreng")
+      @category1 = create(:category)
       @item_category = create(:item_category)
     end
 
@@ -124,6 +146,8 @@ describe ItemCategoriesController do
 
   describe 'DELETE #destroy' do
     before :each do
+      @menuitem1 = create(:menuitem)
+      @category1 = create(:category)
       @item_category = create(:item_category)
     end
 
