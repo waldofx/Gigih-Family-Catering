@@ -25,9 +25,6 @@ class OrderdetailsController < ApplicationController
 
     respond_to do |format|
       if @orderdetail.save
-        # @order = Order.find(@orderdetail[:order_id])
-        # @order[:total] = @order.total
-        # @order.save
         format.html { redirect_to orderdetail_url(@orderdetail), notice: "Orderdetail was successfully created." }
         format.json { render :show, status: :created, location: @orderdetail }
       else

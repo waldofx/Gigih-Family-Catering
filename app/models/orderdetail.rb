@@ -1,7 +1,7 @@
 class Orderdetail < ApplicationRecord
     before_save :set_price
     before_save :set_total
-
+    after_save :order_total
 
     validates :order_id, presence: true
     validates :menuitem_id, presence: true
@@ -37,5 +37,10 @@ class Orderdetail < ApplicationRecord
 
     def set_total
         self[:total] = total
+    end
+
+    def order_total
+        @order = Order.find(self[:order_id])
+        @order.save
     end
 end

@@ -1,5 +1,5 @@
 class Order < ApplicationRecord
-    # before_save :set_total
+    before_save :set_total
 
     validates :customer_id, presence: true
 
@@ -14,10 +14,9 @@ class Order < ApplicationRecord
         self.orderdetails.map { |orderdetail| orderdetail.total }.sum
     end
     
-    # private
+    private
 
     def set_total
         self[:total] = total
-        self.save
     end
 end
