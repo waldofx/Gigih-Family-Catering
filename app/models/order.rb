@@ -1,5 +1,6 @@
 class Order < ApplicationRecord
     before_save :set_total
+    after_find :set_status
 
     validates :customer_id, presence: true
 
@@ -19,4 +20,13 @@ class Order < ApplicationRecord
     def set_total
         self[:total] = total
     end
+
+    def set_status
+        if Time.now.hour >= 17
+            if self[:status].downcase == "new"
+                self[:status] = "CANCELED"
+                self.save
+            end
+        end
+    end     
 end

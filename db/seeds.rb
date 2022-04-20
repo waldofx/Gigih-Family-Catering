@@ -24,9 +24,11 @@ Customer.create(name: 'Waldo', phone: "+6281234567888", address: 'Jakarta', emai
 Customer.create(name: 'Felix', phone: "+6281234567888", address: 'Jakarta', email:'waldofelix3@gmail.com')
 
 Order.create(customer_id: 1, order_date: '2022-04-18', status: 'NEW')
-Order.create(customer_id: 2, order_date: '2022-04-19', status: 'NEW')
+Order.create(customer_id: 2, order_date: '2022-04-18', status: 'NEW')
+Order.create(customer_id: 2, order_date: '2022-04-19', status: "PAID")
 
 Orderdetail.create(order_id: 1, menuitem_id: 1, quantity: 2)
 Orderdetail.create(order_id: 1, menuitem_id: 2, quantity: 2)
 Orderdetail.create(order_id: 2, menuitem_id: 2, quantity: 1)
 Orderdetail.create(order_id: 2, menuitem_id: 3, quantity: 3)
+Orderdetail.create(order_id: 3, menuitem_id: 2, quantity: 1)
