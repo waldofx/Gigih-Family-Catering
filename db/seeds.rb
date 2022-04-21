@@ -12,13 +12,13 @@ Menuitem.create(name: 'Coke', description: 'Coke is nice', price: 5000.0)
 
 Category.create(name: 'Makanan Ringan')
 Category.create(name: 'Makanan Berat')
+Category.create(name: 'Minuman Dingin')
+Category.create(name: 'Makanan Soda')
 
 ItemCategory.create(menuitem_id: 1,category_id: 1)
-ItemCategory.create(menuitem_id: 1,category_id: 2)
-ItemCategory.create(menuitem_id: 2,category_id: 1)
 ItemCategory.create(menuitem_id: 2,category_id: 2)
-ItemCategory.create(menuitem_id: 3,category_id: 1)
-ItemCategory.create(menuitem_id: 3,category_id: 2)
+ItemCategory.create(menuitem_id: 3,category_id: 3)
+ItemCategory.create(menuitem_id: 3,category_id: 4)
 
 Customer.create(name: 'Waldo', phone: "+6281234567888", address: 'Jakarta', email:'waldofelix2@gmail.com')
 Customer.create(name: 'Felix', phone: "+6281234567888", address: 'Jakarta', email:'waldofelix3@gmail.com')
