@@ -1,22 +1,11 @@
 class ReportsController < ApplicationController
-  before_action :set_customer, only: %i[ show edit update destroy ]
+  before_action :set_report, only: %i[ show edit update destroy ]
 
-  # GET /customers or /customers.json
+  # GET /reports or /reports.json
   def index
-    @reports = Order.all
-  end
-
-  def daily
+    today = DateTime.current.to_date
+    @reports = Order.joins(:customer).where("order_date = ?", today)
+    # @reports = Order.joins("INNER JOIN menuitems ON menuitems.id = orderdetails.menuitem_id")
   end
   
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_customer
-      @customer = Customer.find(params[:id])
-    end
-
-    # Only allow a list of trusted parameters through.
-    def customer_params
-      params.require(:customer).permit(:name, :phone, :address, :email)
-    end
 end
