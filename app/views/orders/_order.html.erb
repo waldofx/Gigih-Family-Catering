@@ -4,8 +4,14 @@
   </p>
 
   <p>
-    <strong>Customer:</strong>
+    <strong>Customer ID:</strong>
     <%= order.customer_id %>
+  </p>
+
+  <p>
+    <strong>Customer name:</strong>
+    <%= order.customer.name %>
+    <%= link_to "(Show this customer)", order.customer %>
   </p>
 
   <p>
