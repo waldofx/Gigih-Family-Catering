@@ -4,23 +4,26 @@
   </p>
 
   <p>
-    <strong>Order:</strong>
+    <strong>Order ID:</strong>
     <%= orderdetail.order_id %>
+    <%= link_to "(Show this order)", orderdetail.order %>
   </p>
 
   <p>
     <strong>Order by customer:</strong>
     <%= orderdetail.order.customer.name %>
+    <%= link_to "(Show this customer)", orderdetail.order.customer %>
   </p>
 
   <p>
-    <strong>Menuitem:</strong>
+    <strong>Menuitem ID:</strong>
     <%= orderdetail.menuitem_id %>
   </p>
 
   <p>
     <strong>Menu item name:</strong>
     <%= orderdetail.menuitem.name %>
+    <%= link_to "(Show this menu item)", orderdetail.menuitem %>
   </p>
 
   <p>
