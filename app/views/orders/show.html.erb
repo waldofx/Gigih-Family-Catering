@@ -3,10 +3,24 @@
 <%= render @order %>
 
 <div id="orderdetails">
+  <p><u>Order Details:</u></p>
   <% @orderdetails.each do |orderdetail| %>
-    <%= render orderdetail %>
     <p>
+      <strong>Order detail ID:</strong>
+      <%= orderdetail.id %>
       <%= link_to "Show this order detail", orderdetail %>
+    </p>
+    <p>
+      <strong>Menu item name:</strong>
+      <%= orderdetail.menuitem.name %>
+    </p>
+    <p>
+      <strong>Quantity:</strong>
+      <%= orderdetail.quantity %>
+    </p>
+    <p>
+      <strong> <%= orderdetail.menuitem.name %> total price:</strong>
+      <%= orderdetail.total %>
     </p>
   <% end %>
 </div>
