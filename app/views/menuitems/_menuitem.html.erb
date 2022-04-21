@@ -1,5 +1,9 @@
 <div id="<%= dom_id menuitem %>">
   <p>
+    <u>Menu Item:</u>
+  </p>
+
+  <p>
     <strong>Name:</strong>
     <%= menuitem.name %>
   </p>
@@ -12,6 +16,13 @@
   <p>
     <strong>Price:</strong>
     <%= menuitem.price %>
+  </p>
+
+  <p>
+    <strong>Categories:</strong>
+    <% @item_categories.each do |item_category| %>
+      <%= item_category.category.name %>,
+    <% end %>
   </p>
 
 </div>

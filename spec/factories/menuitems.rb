@@ -8,7 +8,7 @@ FactoryBot.define do
   factory :invalid_menuitem, parent: :menuitem do
     name { nil }
     description { nil }
-    price { 10000.0 }
+    price { 0 }
   end
 end
 

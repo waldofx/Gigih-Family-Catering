@@ -1,7 +1,17 @@
 <div id="<%= dom_id order %>">
   <p>
-    <strong>Customer:</strong>
+    <u>Order:</u>
+  </p>
+
+  <p>
+    <strong>Customer ID:</strong>
     <%= order.customer_id %>
+  </p>
+
+  <p>
+    <strong>Customer name:</strong>
+    <%= order.customer.name %>
+    <%= link_to "(Show this customer)", order.customer %>
   </p>
 
   <p>

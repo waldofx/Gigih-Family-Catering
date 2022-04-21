@@ -4,6 +4,8 @@ describe OrdersController do
   describe 'GET #index' do
     context 'without params[:letter]' do
       it "populates an array of all orders" do 
+        customer1 = create(:customer)
+        customer2 = create(:customer)
         order1 = create(:order, customer_id: 1, total: 95000.0, order_date: '2022-04-18', status: 'NEW')
         order2 = create(:order, customer_id: 2, total: 95000.0, order_date: '2022-04-19', status: 'NEW')
         get :index
@@ -19,12 +21,14 @@ describe OrdersController do
 
   describe 'GET #show' do
     it "assigns the requested order to @order" do
+      customer1 = create(:customer)
       order = create(:order)
       get :show, params: { id: order }
       expect(assigns(:order)).to eq order
     end
 
     it "renders the :show template" do
+      customer1 = create(:customer)
       order = create(:order)
       get :show, params: { id: order }
       expect(response).to render_template :show
@@ -45,12 +49,14 @@ describe OrdersController do
 
   describe 'GET #edit' do
     it "assigns the requested order to @order" do
+      customer1 = create(:customer)
       order = create(:order)
       get :edit, params: { id: order }
       expect(assigns(:order)).to eq order
     end
 
     it "renders the :edit template" do
+      customer1 = create(:customer)
       order = create(:order)
       get :edit, params: { id: order }
       expect(response).to render_template :edit
@@ -60,12 +66,14 @@ describe OrdersController do
   describe 'POST #create' do
     context "with valid attributes" do
       it "saves the new order in the database" do
+        customer1 = create(:customer)
         expect{
           post :create, params: { order: attributes_for(:order) }
         }.to change(Order, :count).by(1)
       end
 
       it "redirects to orders#show" do
+      customer1 = create(:customer)
         post :create, params: { order: attributes_for(:order) }
         expect(response).to redirect_to(order_path(assigns[:order]))
       end
@@ -73,12 +81,14 @@ describe OrdersController do
 
     context "with invalid attributes" do
       it "does not save the new order in the database" do
+        customer1 = create(:customer)
         expect{
           post :create, params: { order: attributes_for(:invalid_order) }
         }.not_to change(Order, :count)
       end
 
       it "re-renders the :new template" do
+        customer1 = create(:customer)
         post :create, params: { order: attributes_for(:invalid_order) }
         expect(response).to render_template :new
       end
@@ -87,6 +97,8 @@ describe OrdersController do
 
   describe 'PATCH #update' do
     before :each do
+      @customer1 = create(:customer)
+      @customer2 = create(:customer)
       @order = create(:order)
     end
 
@@ -97,9 +109,9 @@ describe OrdersController do
         end
   
         it "changes @order's attributes" do
-          patch :update, params: { id: @order, order: attributes_for(:order, total: 200000.0) }
+          patch :update, params: { id: @order, order: attributes_for(:order, customer_id: 2) }
           @order.reload
-          expect(@order.total).to eq(200000.0)
+          expect(@order.customer_id).to eq(2)
         end
   
         it "redirects to the order" do
@@ -110,8 +122,8 @@ describe OrdersController do
 
     context 'with invalid attributes' do
       it 'does not save the updated order in the database' do
-        patch :update, params: { id: @order, order: attributes_for(:invalid_order, total: 200000.0) }
-        expect(@order.total).not_to eq(200000.0)
+        patch :update, params: { id: @order, order: attributes_for(:invalid_order, customer_id: 2) }
+        expect(@order.customer_id).not_to eq(2)
       end
 
       it 're-renders the edit template' do
@@ -124,6 +136,7 @@ describe OrdersController do
 
   describe 'DELETE #destroy' do
     before :each do
+      @customer1 = create(:customer)
       @order = create(:order)
     end
 

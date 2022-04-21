@@ -1,7 +1,10 @@
-<h3>Edit <%= @menuitem.name %></h3>
-<%= form_with model: @menuitem do |form| %>
-    <%= form.text_field :name, placeholder: "name" %>
-    <%= form.text_field :description, placeholder: "description" %>
-    <%= form.number_field :price, placeholder: "price" %>
-    <%= form.submit %>
-<% end %>
+<h1>Editing menuitem</h1>
+
+<%= render "form", menuitem: @menuitem %>
+
+<br>
+
+<div>
+  <%= link_to "Show this menuitem", @menuitem %> |
+  <%= link_to "Back to menuitems", menuitems_path %>
+</div>

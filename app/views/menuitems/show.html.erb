@@ -1,6 +1,10 @@
 <p style="color: green"><%= notice %></p>
-<h1>Menuitems Detail</h1>
-<p>Menu item name: <%= @menuitem.name %></p>
-<p>Menu item description: <%= @menuitem.description %></p>
-<p>Menu item price: <%= @menuitem.price %></p>
-<a href="/menuitems">Menu items</a>
+
+<%= render @menuitem %>
+
+<div>
+  <%= link_to "Edit this menuitem", edit_menuitem_path(@menuitem) %> |
+  <%= link_to "Back to menuitems", menuitems_path %>
+
+  <%= button_to "Destroy this menuitem", @menuitem, method: :delete %>
+</div>

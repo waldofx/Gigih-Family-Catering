@@ -1,9 +1,9 @@
-<h1>Menu items#new</h1>
-<p>Find me in app/views/menuitems/new.html.erb</p>
-<h3>Create an Menu item</h3>
-<%= form_with model: @menuitem do |form| %>
-    <%= form.text_field :name, placeholder: "name" %>
-    <%= form.text_field :description, placeholder: "description" %>
-    <%= form.number_field :price, placeholder: "price" %>
-    <%= form.submit %>
-<% end %>
+<h1>New menuitem</h1>
+
+<%= render "form", menuitem: @menuitem %>
+
+<br>
+
+<div>
+  <%= link_to "Back to menuitems", menuitems_path %>
+</div>

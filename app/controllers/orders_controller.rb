@@ -61,10 +61,11 @@ class OrdersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_order
       @order = Order.find(params[:id])
+      @orderdetails = Orderdetail.where("order_id = ?", @order[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def order_params
-      params.require(:order).permit(:customer_id, :total, :order_date, :status)
+      params.require(:order).permit(:customer_id, :order_date, :status)
     end
 end
