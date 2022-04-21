@@ -2,6 +2,19 @@
 
 <%= render @order %>
 
+<div id="customers">
+    <%= render @customer %>
+</div>
+
+<div id="orderdetails">
+  <% @orderdetails.each do |orderdetail| %>
+    <%= render orderdetail %>
+    <p>
+      <%= link_to "Show this order detail", orderdetail %>
+    </p>
+  <% end %>
+</div>
+
 <div>
   <%= link_to "Edit this order", edit_order_path(@order) %> |
   <%= link_to "Back to orders", orders_path %>
