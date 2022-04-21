@@ -61,6 +61,7 @@ class MenuitemsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_menuitem
       @menuitem = Menuitem.find(params[:id])
+      @item_categories = ItemCategory.where("menuitem_id = ?", @menuitem[:id])
     end
 
     # Only allow a list of trusted parameters through.

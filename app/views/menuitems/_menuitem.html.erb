@@ -18,4 +18,11 @@
     <%= menuitem.price %>
   </p>
 
+  <p>
+    <strong>Category:</strong>
+    <% @item_categories.each do |item_category| %>
+      <%= item_category.category.name %>,
+    <% end %>
+  </p>
+
 </div>
