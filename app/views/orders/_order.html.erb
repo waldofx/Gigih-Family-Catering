@@ -1,6 +1,6 @@
 <div id="<%= dom_id order %>">
   <p>
-    <u>Order:</u>
+    <u>Order <%= order.id %>:</u>
   </p>
 
   <p>
@@ -12,6 +12,11 @@
     <strong>Customer name:</strong>
     <%= order.customer.name %>
     <%= link_to "(Show this customer)", order.customer %>
+  </p>
+
+  <p>
+    <strong>Customer email:</strong>
+    <%= order.customer.email %>
   </p>
 
   <p>

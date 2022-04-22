@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :customers
   resources :orders
   resources :orderdetails
+  resources :reports
   # Defines the root path route ("/")
   # root "articles#index"
 end
