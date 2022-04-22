@@ -1,0 +1,37 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @order %>
+
+<div id="orderdetails">
+  <p><u>Order Details:</u></p>
+  <% @orderdetails.each do |orderdetail| %>
+    <p>
+      <strong>Order detail ID:</strong>
+      <%= orderdetail.id %>
+      <%= link_to "Show this order detail", orderdetail %>
+    </p>
+    <p>
+      <strong>Menu item name:</strong>
+      <%= orderdetail.menuitem.name %>
+    </p>
+    <p>
+      <strong>Quantity:</strong>
+      <%= orderdetail.quantity %>
+    </p>
+    <p>
+      <strong> <%= orderdetail.menuitem.name %> total price:</strong>
+      <%= orderdetail.total %>
+    </p>
+  <% end %>
+</div>
+
+<div>
+  <%= link_to "New order detail", new_orderdetail_path %>
+</div>
+
+<div>
+  <%= link_to "Edit this order", edit_order_path(@order) %> |
+  <%= link_to "Back to orders", orders_path %>
+
+  <%= button_to "Destroy this order", @order, method: :delete %>
+</div>

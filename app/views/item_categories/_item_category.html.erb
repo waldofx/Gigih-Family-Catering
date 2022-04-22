@@ -1,0 +1,28 @@
+<div id="<%= dom_id item_category %>">
+  <p>
+    <u>Item Category <%= item_category.id %>:</u>
+  </p>
+
+  <p>
+    <strong>Item ID:</strong>
+    <%= item_category.menuitem_id %>
+  </p>
+
+  <p>
+    <strong>Item name:</strong>
+    <%= item_category.menuitem.name %>
+    <%= link_to "(Show this menu item)", item_category.menuitem %>
+  </p>
+
+  <p>
+    <strong>Category ID:</strong>
+    <%= item_category.category_id %>
+  </p>
+
+  <p>
+    <strong>Category name:</strong>
+    <%= item_category.category.name %>
+    <%= link_to "(Show this category)", item_category.category %>
+  </p>
+
+</div>

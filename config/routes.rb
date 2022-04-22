@@ -5,7 +5,13 @@ Rails.application.routes.draw do
   # get 'foods/edit'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  resources :foods
+  resources :menuitems
+  resources :categories
+  resources :item_categories
+  resources :customers
+  resources :orders
+  resources :orderdetails
+  resources :reports
   # Defines the root path route ("/")
   # root "articles#index"
 end
